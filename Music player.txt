@@ -1,0 +1,39 @@
+import pygame
+
+class MusicPlayer:
+    def __init__(self):
+        pygame.mixer.init()
+
+    def load_music(self, file_path):
+        try:
+            pygame.mixer.music.load(file_path)
+            print("Music loaded successfully.")
+        except pygame.error as e:
+            print(f"Error loading music: {e}")
+
+    def play(self):
+        try:
+            pygame.mixer.music.play()
+            print("Music is playing...")
+        except pygame.error as e:
+            print(f"Error playing music: {e}")
+
+    def stop(self):
+        pygame.mixer.music.stop()
+        print("Music stopped.")
+
+    def quit(self):
+        pygame.mixer.quit()
+        print("Mixer quit.")
+
+if __name__ == "__main__":
+    music_file_path = "C:/Users/DELL/Downloads/Music/jaishriram.mp3" 
+
+    player = MusicPlayer()
+    player.load_music(music_file_path)
+    player.play()
+
+    input("Press Enter to stop the music...")
+
+    player.stop()
+    player.quit()
